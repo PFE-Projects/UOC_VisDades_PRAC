@@ -313,7 +313,9 @@ CREATE TABLE ORIGEN.EILU2019_TAULES_DS (
     DS_VALOR VARCHAR(255),
     TAULA VARCHAR(50)
  );
- --------------------------------------
+ --------------------------------------------------
+ -- es rea una mostra aleaòria de 10.000 registres
+ --------------------------------------------------
 CREATE TABLE ORIGEN.EILU2019_DATASET_10000 AS
 SELECT *
 FROM (
@@ -322,15 +324,5 @@ FROM (
     ORDER BY DBMS_RANDOM.VALUE
 )
 WHERE ROWNUM <= 10000;
-/******************
-UPDATES
-******************/
-UPDATE ORIGEN.EILU2019_DATASET
-SET TITU = CONCAT('0', TITU)
-WHERE TITU NOT LIKE '0%';
 
-
-SELECT DB.IDENT,DB.SEXO,DB.EDAD,DB.TITU
-FROM ORIGEN.EILU2019_DATASET DB
-WHERE DB.TITU IS NOT NULL;
 
